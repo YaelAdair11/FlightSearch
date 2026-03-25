@@ -19,10 +19,10 @@ interface FlightDao {
     fun getAllFavorites(): Flow<List<Favorite>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertFavorite(favorite: Favorite)
+    suspend fun insertFavorite(favorite: Favorite): Unit // <-- Agrega el : Unit
 
     @Delete
-    suspend fun deleteFavorite(favorite: Favorite)
+    suspend fun deleteFavorite(favorite: Favorite): Unit // <-- Agrega el : Unit
 
     @Query("SELECT * FROM favorite WHERE departure_code = :departure AND destination_code = :destination")
     suspend fun getFavoriteRoute(departure: String, destination: String): Favorite?
