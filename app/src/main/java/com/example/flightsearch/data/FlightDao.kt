@@ -18,12 +18,13 @@ interface FlightDao {
     @Query("SELECT * FROM favorite")
     fun getAllFavorites(): Flow<List<Favorite>>
 
+    // IMPORTANTE: Ya NO tienen la palabra "suspend"
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertFavorite(favorite: Favorite): Long
+    fun insertFavorite(favorite: Favorite)
 
     @Delete
-    suspend fun deleteFavorite(favorite: Favorite): Int
+    fun deleteFavorite(favorite: Favorite)
 
     @Query("SELECT * FROM favorite WHERE departure_code = :departure AND destination_code = :destination")
-    suspend fun getFavoriteRoute(departure: String, destination: String): Favorite?
+    fun getFavoriteRoute(departure: String, destination: String): Favorite?
 }
