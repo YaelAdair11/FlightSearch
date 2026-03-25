@@ -1,4 +1,4 @@
-package com.example.flightsearch.ui.theme
+package com.example.flightsearch.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
