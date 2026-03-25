@@ -1,4 +1,4 @@
-package com.example.flightsearch.datos
+package com.example.flightsearch.data
 
 import kotlinx.coroutines.flow.Flow
 

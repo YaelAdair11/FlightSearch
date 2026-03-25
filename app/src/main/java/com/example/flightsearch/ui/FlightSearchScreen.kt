@@ -3,7 +3,6 @@ package com.example.flightsearch.ui
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
@@ -15,6 +14,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.foundation.layout.width
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -25,9 +27,9 @@ fun FlightSearchScreen(
     val searchQuery by viewModel.searchQuery.collectAsState()
 
     // Estado local: qué aeropuerto tocaste para ver sus vuelos
-    var aeropuertoSeleccionado by remember { mutableStateOf<com.example.flightsearch.datos.Airport?>(null) }
+    var aeropuertoSeleccionado by remember { mutableStateOf<com.example.flightsearch.data.Airport?>(null) }
 
-    // Recolectamos datos de Room automáticamente
+    // Recolectamos data de Room automáticamente
     val sugerencias by viewModel.searchAirports(searchQuery).collectAsState(initial = emptyList())
     val favoritos by viewModel.getFavorites().collectAsState(initial = emptyList())
     val destinos by viewModel.getDestinations(aeropuertoSeleccionado?.iataCode ?: "").collectAsState(initial = emptyList())

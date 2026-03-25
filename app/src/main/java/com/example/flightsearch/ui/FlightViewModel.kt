@@ -7,15 +7,12 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.flightsearch.FlightSearchApplication
-import com.example.flightsearch.datos.Airport
-import com.example.flightsearch.datos.Favorite
-import com.example.flightsearch.datos.FlightRepository
-import com.example.flightsearch.datos.UserPreferencesRepository
+import com.example.flightsearch.data.Favorite
+import com.example.flightsearch.data.FlightRepository
+import com.example.flightsearch.data.UserPreferencesRepository
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class FlightViewModel(
@@ -44,7 +41,7 @@ class FlightViewModel(
         }
     }
 
-    // Funciones para leer la base de datos desde la UI
+    // Funciones para leer la base de data desde la UI
     fun searchAirports(query: String) = flightRepository.searchAirports(query)
     fun getDestinations(departureIata: String) = flightRepository.getAllDestinations(departureIata)
     fun getFavorites() = flightRepository.getAllFavorites()
